@@ -9,7 +9,7 @@ A implementação deve priorizar clareza, simplicidade e boas práticas de engen
 
 # Stack
 
-- .NET 8
+- .NET 10
 - ASP.NET Core Web API
 - C#
 - Entity Framework Core
@@ -157,7 +157,7 @@ Ao gerar código:
 - explique brevemente as decisões arquiteturais quando solicitado;
 - siga os padrões existentes no projeto;
 - nunca introduza bibliotecas sem necessidade;
-- utilize apenas recursos compatíveis com .NET 8;
+- utilize apenas recursos compatíveis com .NET 10;
 - priorize clareza e manutenção.
 
 ---

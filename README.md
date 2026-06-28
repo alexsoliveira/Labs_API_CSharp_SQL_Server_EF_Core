@@ -8,7 +8,7 @@ O objetivo é aprender desde os fundamentos da linguagem C# até boas práticas 
 
 ## Tecnologias
 
-* .NET 8
+* .NET 10
 * ASP.NET Core
 * SQL Server
 * Entity Framework Core

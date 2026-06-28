@@ -1,4 +1,5 @@
 using ProductApi.Application.Products;
+using ProductApi.Api.Middlewares;
 using ProductApi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +31,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.MapControllers();
 
 
 app.Run();
+
+public partial class Program;

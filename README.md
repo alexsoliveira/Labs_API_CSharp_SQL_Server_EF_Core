@@ -90,3 +90,23 @@ Após a conclusão deste projeto, a evolução seguirá com:
 6. Observabilidade
 7. Testes de Integração
 8. Kubernetes
+
+## Execução local
+
+### Via Docker
+
+```bash
+docker compose up --build
+```
+
+### Via .NET CLI
+
+```bash
+dotnet run --project src/ProductApi.Api/ProductApi.Api.csproj
+```
+
+## Configuração
+
+- A connection string padrão fica em `src/ProductApi.Api/appsettings.json`.
+- No Docker Compose, a API usa o host `sqlserver` e a porta `1433`.
+- A API expõe HTTP na porta `8080` dentro do container.

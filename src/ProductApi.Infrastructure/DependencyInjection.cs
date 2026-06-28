@@ -13,7 +13,8 @@ public static class DependencyInjection
         string connectionString)
     {
         services.AddDbContext<ProductDbContext>(options =>
-            options.UseSqlServer(connectionString));
+            options.UseSqlServer(connectionString, sqlServerOptions =>
+                sqlServerOptions.EnableRetryOnFailure()));
 
         services.AddScoped<IProductRepository, ProductRepository>();
 

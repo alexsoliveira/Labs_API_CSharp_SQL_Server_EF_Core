@@ -1,5 +1,7 @@
 using ProductApi.Application.Products;
 using ProductApi.Api.Middlewares;
+using Microsoft.EntityFrameworkCore;
+using ProductApi.Infrastructure.Persistence;
 using ProductApi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +22,17 @@ builder.Services.AddInfrastructure(
         ?? "Server=localhost;Database=ProductApi;User Id=sa;Password=Your_password123;TrustServerCertificate=True");
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ProductDbContext>();
+    var executionStrategy = dbContext.Database.CreateExecutionStrategy();
+
+    await executionStrategy.ExecuteAsync(async () =>
+    {
+        await dbContext.Database.MigrateAsync();
+    });
+}
 
 if (app.Environment.IsDevelopment())
 {

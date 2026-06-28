@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:8080
+
+### Criar produto
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Mouse Gamer",
+  "description": "Mouse sem fio com DPI ajustavel",
+  "price": 129.9,
+  "stock": 15
+}
+
+### Listar produtos
+GET {{baseUrl}}/api/products
+
+### Buscar por id
+GET {{baseUrl}}/api/products/{{productId}}
+
+### Atualizar produto
+PUT {{baseUrl}}/api/products/{{productId}}
+Content-Type: application/json
+
+{
+  "name": "Mouse Gamer Pro",
+  "description": "Versao atualizada com maior precisao",
+  "price": 149.9,
+  "stock": 10
+}
+
+### Pesquisar por nome
+GET {{baseUrl}}/api/products/search?name=mouse
+
+### Paginar produtos
+GET {{baseUrl}}/api/products/paged?page=1&pageSize=10
+
+### Excluir produto
+DELETE {{baseUrl}}/api/products/{{productId}}
+
+### Criar produto invalido para testar ProblemDetails
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "description": null,
+  "price": 100,
+  "stock": 5
+}

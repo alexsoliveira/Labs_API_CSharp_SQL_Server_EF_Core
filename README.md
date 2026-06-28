@@ -55,6 +55,32 @@ tests/
 
 * ProductApi.Tests
 
+## Arquitetura
+
+O projeto segue uma arquitetura em camadas:
+
+* ProductApi.Api: controllers, middleware, DI e configuracao da aplicacao.
+* ProductApi.Application: casos de uso, DTOs e respostas da API.
+* ProductApi.Domain: entidade principal, regras de negocio e contratos.
+* ProductApi.Infrastructure: EF Core, DbContext, repositorios e persistencia SQL Server.
+
+## Endpoints principais
+
+* `POST /api/products`
+* `GET /api/products`
+* `GET /api/products/{id}`
+* `PUT /api/products/{id}`
+* `DELETE /api/products/{id}`
+* `GET /api/products/search?name=...`
+* `GET /api/products/paged?page=1&pageSize=10`
+
+## Comportamento da API
+
+* Retorna `ProblemDetails` para erros tratados globalmente.
+* Publica OpenAPI/Swagger no ambiente de desenvolvimento.
+* Usa SQL Server via Entity Framework Core.
+* Suporta execucao local via Docker Compose.
+
 ## Estrutura da Entidade Product
 
 * Id
@@ -99,6 +125,12 @@ Após a conclusão deste projeto, a evolução seguirá com:
 docker compose up --build
 ```
 
+Para parar os containers:
+
+```bash
+docker compose down
+```
+
 ### Via .NET CLI
 
 ```bash
@@ -110,3 +142,9 @@ dotnet run --project src/ProductApi.Api/ProductApi.Api.csproj
 - A connection string padrão fica em `src/ProductApi.Api/appsettings.json`.
 - No Docker Compose, a API usa o host `sqlserver` e a porta `1433`.
 - A API expõe HTTP na porta `8080` dentro do container.
+
+## Observacoes
+
+- A migration inicial de `Products` já foi criada.
+- O tratamento global de exceções está centralizado em middleware.
+- Os testes unitários e de integração fazem parte da solução e passam localmente.
